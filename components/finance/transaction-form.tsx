@@ -89,23 +89,23 @@ export function TransactionForm({
 
     return (
         <Dialog open={open} onOpenChange={onOpenChange}>
-            <DialogContent className="sm:max-w-md">
+            <DialogContent className="sm:max-w-md w-[95vw] max-h-[90vh] overflow-y-auto">
                 <DialogHeader>
-                    <DialogTitle className="text-xl">
+                    <DialogTitle className="text-lg md:text-xl">
                         {transaction ? "Edit Transaksi" : "Tambah Transaksi"}
                     </DialogTitle>
                 </DialogHeader>
 
-                <form onSubmit={handleSubmit} className="space-y-5">
+                <form onSubmit={handleSubmit} className="space-y-4 md:space-y-5">
                     <Tabs value={type} onValueChange={(v) => {
                         setType(v as TransactionType)
                         setCategoryId("")
                     }}>
-                        <TabsList className="grid w-full grid-cols-2">
+                        <TabsList className="grid w-full grid-cols-2 h-9 md:h-10">
                             <TabsTrigger
                                 value="expense"
                                 className={cn(
-                                    "data-[state=active]:bg-rose-500 data-[state=active]:text-white",
+                                    "text-xs md:text-sm data-[state=active]:bg-rose-500 data-[state=active]:text-white",
                                     "dark:data-[state=active]:bg-rose-600 dark:data-[state=active]:text-white"
                                 )}
                             >
@@ -114,7 +114,7 @@ export function TransactionForm({
                             <TabsTrigger
                                 value="income"
                                 className={cn(
-                                    "data-[state=active]:bg-emerald-500 data-[state=active]:text-white",
+                                    "text-xs md:text-sm data-[state=active]:bg-emerald-500 data-[state=active]:text-white",
                                     "dark:data-[state=active]:bg-emerald-600 dark:data-[state=active]:text-white"
                                 )}
                             >
@@ -124,7 +124,7 @@ export function TransactionForm({
                     </Tabs>
 
                     <div className="space-y-2">
-                        <Label htmlFor="amount">Jumlah (Rp)</Label>
+                        <Label htmlFor="amount" className="text-sm">Jumlah (Rp)</Label>
                         <Input
                             id="amount"
                             type="text"
@@ -132,13 +132,13 @@ export function TransactionForm({
                             placeholder="0"
                             value={amount ? parseInt(amount).toLocaleString("id-ID") : ""}
                             onChange={(e) => handleAmountChange(e.target.value)}
-                            className="text-2xl font-bold h-14"
+                            className="text-xl md:text-2xl font-bold h-12 md:h-14"
                             required
                         />
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="category">Kategori</Label>
+                        <Label htmlFor="category" className="text-sm">Kategori</Label>
                         <Select value={categoryId} onValueChange={setCategoryId} required>
                             <SelectTrigger id="category">
                                 <SelectValue placeholder="Pilih kategori" />
@@ -157,7 +157,7 @@ export function TransactionForm({
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="date">Tanggal</Label>
+                        <Label htmlFor="date" className="text-sm">Tanggal</Label>
                         <CustomDatePicker
                             date={date}
                             onDateChange={(d) => d && setDate(d)}
@@ -165,7 +165,7 @@ export function TransactionForm({
                     </div>
 
                     <div className="space-y-2">
-                        <Label htmlFor="description">Keterangan (Opsional)</Label>
+                        <Label htmlFor="description" className="text-sm">Keterangan (Opsional)</Label>
                         <Input
                             id="description"
                             placeholder="Tambahkan keterangan..."
@@ -174,11 +174,12 @@ export function TransactionForm({
                         />
                     </div>
 
-                    <DialogFooter className="gap-2 sm:gap-0">
+                    <DialogFooter className="gap-2 sm:gap-0 flex-col sm:flex-row">
                         <Button
                             type="button"
                             variant="outline"
                             onClick={() => onOpenChange(false)}
+                            className="w-full sm:w-auto"
                         >
                             Batal
                         </Button>
@@ -186,6 +187,7 @@ export function TransactionForm({
                             type="submit"
                             variant={type === "income" ? "success" : "destructive"}
                             disabled={!categoryId || !amount}
+                            className="w-full sm:w-auto"
                         >
                             {transaction ? "Simpan" : "Tambah"}
                         </Button>

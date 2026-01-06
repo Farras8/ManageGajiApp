@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useCallback, useEffect } from "react"
-import { Category, Transaction, FilterPeriod, TransactionType } from "@/types/finance"
+import { Category, Transaction, FilterPeriod, TransactionType, FilterType } from "@/types/finance"
 import { filterTransactionsByPeriod, calculateSummary } from "@/lib/finance"
 
 const defaultCategories: Omit<Category, "id" | "createdAt">[] = [
@@ -46,6 +46,7 @@ export function useFinance() {
     const [categories, setCategories] = useState<Category[]>([])
     const [transactions, setTransactions] = useState<Transaction[]>([])
     const [filterPeriod, setFilterPeriod] = useState<FilterPeriod>("month")
+    const [filterType, setFilterType] = useState<FilterType>("all")
     const [selectedDate, setSelectedDate] = useState<Date>(new Date())
     const [isLoading, setIsLoading] = useState(true)
 
@@ -191,11 +192,16 @@ export function useFinance() {
         category: categories.find((c) => c.id === t.categoryId),
     }))
 
-    const filteredTransactions = filterTransactionsByPeriod(
+    const filteredByPeriod = filterTransactionsByPeriod(
         transactionsWithCategory,
         filterPeriod,
         selectedDate
     )
+
+    // Filter berdasarkan tipe transaksi
+    const filteredTransactions = filterType === "all" 
+        ? filteredByPeriod
+        : filteredByPeriod.filter((t) => t.type === filterType)
 
     const summary = calculateSummary(filteredTransactions)
 
@@ -205,9 +211,11 @@ export function useFinance() {
         filteredTransactions,
         summary,
         filterPeriod,
+        filterType,
         selectedDate,
         isLoading,
         setFilterPeriod,
+        setFilterType,
         setSelectedDate,
         addCategory,
         updateCategory,

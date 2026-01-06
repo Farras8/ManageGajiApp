@@ -89,37 +89,67 @@ interface CategoryItemProps {
 
 function CategoryItem({ category, onEdit, onDelete }: CategoryItemProps) {
     return (
-        <div className="group flex items-center gap-3 p-3 rounded-lg bg-card border hover:shadow-sm transition-all">
-            <div
-                className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0"
-                style={{ backgroundColor: `${category.color}20` }}
-            >
-                {category.icon}
+        <div className="group rounded-lg bg-card border hover:shadow-sm transition-all">
+            {/* Main content */}
+            <div className="flex items-center gap-3 p-3">
+                <div
+                    className="w-10 h-10 rounded-lg flex items-center justify-center text-lg shrink-0"
+                    style={{ backgroundColor: `${category.color}20` }}
+                >
+                    {category.icon}
+                </div>
+
+                <div className="flex-1 min-w-0">
+                    <span className="font-medium truncate block">{category.name}</span>
+                </div>
+
+                {/* Action buttons for desktop - di samping */}
+                <div className="hidden md:flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {onEdit && (
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={() => onEdit(category)}
+                        >
+                            <Pencil className="h-4 w-4" />
+                        </Button>
+                    )}
+                    {onDelete && (
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-destructive hover:text-destructive"
+                            onClick={() => onDelete(category.id)}
+                        >
+                            <Trash2 className="h-4 w-4" />
+                        </Button>
+                    )}
+                </div>
             </div>
 
-            <div className="flex-1 min-w-0">
-                <span className="font-medium truncate block">{category.name}</span>
-            </div>
-
-            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            {/* Action buttons for mobile - di bawah */}
+            <div className="flex md:hidden items-center justify-end gap-1 px-3 pb-3 pt-0 border-t border-border/50">
                 {onEdit && (
                     <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8"
+                        variant="outline"
+                        size="sm"
+                        className="h-7 text-xs flex-1"
                         onClick={() => onEdit(category)}
                     >
-                        <Pencil className="h-4 w-4" />
+                        <Pencil className="h-3 w-3 mr-1" />
+                        Edit
                     </Button>
                 )}
                 {onDelete && (
                     <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-destructive hover:text-destructive"
+                        variant="outline"
+                        size="sm"
+                        className="h-7 text-xs flex-1 text-destructive hover:text-destructive"
                         onClick={() => onDelete(category.id)}
                     >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-3 w-3 mr-1" />
+                        Hapus
                     </Button>
                 )}
             </div>

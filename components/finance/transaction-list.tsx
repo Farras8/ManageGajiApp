@@ -19,12 +19,12 @@ interface TransactionListProps {
 export function TransactionList({ transactions, onEdit, onDelete }: TransactionListProps) {
     if (transactions.length === 0) {
         return (
-            <div className="flex flex-col items-center justify-center py-16 text-center">
-                <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
-                    <span className="text-3xl">📝</span>
+            <div className="flex flex-col items-center justify-center py-12 md:py-16 text-center">
+                <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-muted flex items-center justify-center mb-3 md:mb-4">
+                    <span className="text-2xl md:text-3xl">📝</span>
                 </div>
-                <h3 className="text-lg font-semibold mb-2">Belum ada transaksi</h3>
-                <p className="text-muted-foreground text-sm">
+                <h3 className="text-base md:text-lg font-semibold mb-1 md:mb-2">Belum ada transaksi</h3>
+                <p className="text-muted-foreground text-xs md:text-sm">
                     Mulai catat pemasukan dan pengeluaran Anda
                 </p>
             </div>
@@ -45,12 +45,12 @@ export function TransactionList({ transactions, onEdit, onDelete }: TransactionL
     )
 
     return (
-        <ScrollArea className="h-[500px] pr-4">
-            <div className="space-y-6">
+        <ScrollArea className="h-[400px] md:h-[500px] pr-2 md:pr-4">
+            <div className="space-y-4 md:space-y-6">
                 {sortedDates.map((dateKey) => (
                     <div key={dateKey}>
-                        <div className="sticky top-0 bg-background/95 backdrop-blur-sm z-10 py-2">
-                            <h3 className="text-sm font-semibold text-muted-foreground">
+                        <div className="sticky top-0 bg-background/95 backdrop-blur-sm z-10 py-1.5 md:py-2">
+                            <h3 className="text-xs md:text-sm font-semibold text-muted-foreground">
                                 {format(new Date(dateKey), "EEEE, d MMMM yyyy", { locale: id })}
                             </h3>
                         </div>
@@ -81,58 +81,88 @@ function TransactionItem({ transaction, onEdit, onDelete }: TransactionItemProps
     const isIncome = transaction.type === "income"
 
     return (
-        <div className="group flex items-center gap-4 p-4 rounded-xl bg-card border hover:shadow-md transition-all duration-200">
-            <div
-                className="w-12 h-12 rounded-xl flex items-center justify-center text-xl shrink-0"
-                style={{ backgroundColor: `${transaction.category?.color}20` }}
-            >
-                {transaction.category?.icon || "📦"}
-            </div>
-
-            <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                    <span className="font-semibold truncate">
-                        {transaction.category?.name || "Tanpa Kategori"}
-                    </span>
-                    <Badge variant={isIncome ? "income" : "expense"} className="shrink-0">
-                        {isIncome ? "Pemasukan" : "Pengeluaran"}
-                    </Badge>
+        <div className="group rounded-lg md:rounded-xl bg-card border hover:shadow-md transition-all duration-200">
+            {/* Main content - horizontal layout */}
+            <div className="flex items-center gap-2 md:gap-4 p-3 md:p-4">
+                <div
+                    className="w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center text-base md:text-xl shrink-0"
+                    style={{ backgroundColor: `${transaction.category?.color}20` }}
+                >
+                    {transaction.category?.icon || "📦"}
                 </div>
-                {transaction.description && (
-                    <p className="text-sm text-muted-foreground truncate">
-                        {transaction.description}
+
+                <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-1.5 md:gap-2 mb-0.5 md:mb-1 flex-wrap">
+                        <span className="font-semibold text-sm md:text-base truncate">
+                            {transaction.category?.name || "Tanpa Kategori"}
+                        </span>
+                        <Badge variant={isIncome ? "income" : "expense"} className="shrink-0 text-xs">
+                            {isIncome ? "Pemasukan" : "Pengeluaran"}
+                        </Badge>
+                    </div>
+                    {transaction.description && (
+                        <p className="text-xs md:text-sm text-muted-foreground truncate">
+                            {transaction.description}
+                        </p>
+                    )}
+                </div>
+
+                <div className="text-right shrink-0">
+                    <p className={cn(
+                        "font-bold text-sm md:text-lg whitespace-nowrap",
+                        isIncome ? "text-emerald-600" : "text-rose-600"
+                    )}>
+                        {isIncome ? "+" : "-"}{formatCurrency(transaction.amount)}
                     </p>
-                )}
+                </div>
+
+                {/* Action buttons for desktop - tetap di samping */}
+                <div className="hidden md:flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                    {onEdit && (
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8"
+                            onClick={() => onEdit(transaction)}
+                        >
+                            <Pencil className="h-4 w-4" />
+                        </Button>
+                    )}
+                    {onDelete && (
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            className="h-8 w-8 text-destructive hover:text-destructive"
+                            onClick={() => onDelete(transaction.id)}
+                        >
+                            <Trash2 className="h-4 w-4" />
+                        </Button>
+                    )}
+                </div>
             </div>
 
-            <div className="text-right shrink-0">
-                <p className={cn(
-                    "font-bold text-lg",
-                    isIncome ? "text-emerald-600" : "text-rose-600"
-                )}>
-                    {isIncome ? "+" : "-"}{formatCurrency(transaction.amount)}
-                </p>
-            </div>
-
-            <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+            {/* Action buttons for mobile - di bawah */}
+            <div className="flex md:hidden items-center justify-end gap-1 px-3 pb-3 pt-0 border-t border-border/50 mt-0">
                 {onEdit && (
                     <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8"
+                        variant="outline"
+                        size="sm"
+                        className="h-8 text-xs flex-1"
                         onClick={() => onEdit(transaction)}
                     >
-                        <Pencil className="h-4 w-4" />
+                        <Pencil className="h-3.5 w-3.5 mr-1" />
+                        Edit
                     </Button>
                 )}
                 {onDelete && (
                     <Button
-                        variant="ghost"
-                        size="icon"
-                        className="h-8 w-8 text-destructive hover:text-destructive"
+                        variant="outline"
+                        size="sm"
+                        className="h-8 text-xs flex-1 text-destructive hover:text-destructive"
                         onClick={() => onDelete(transaction.id)}
                     >
-                        <Trash2 className="h-4 w-4" />
+                        <Trash2 className="h-3.5 w-3.5 mr-1" />
+                        Hapus
                     </Button>
                 )}
             </div>

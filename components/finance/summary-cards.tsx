@@ -50,33 +50,33 @@ export function SummaryCards({ summary }: SummaryCardsProps) {
     ]
 
     return (
-        <div className="space-y-4">
+        <div className="space-y-3 md:space-y-4">
             <Card className="border-gold/20 bg-gradient-to-br from-card to-card/80 overflow-hidden relative">
                 <div className="absolute inset-0 opacity-10 bg-gradient-to-br from-amber-500 via-yellow-500 to-amber-600" />
-                <CardContent className="p-6 lg:p-8 relative">
+                <CardContent className="p-4 md:p-6 lg:p-8 relative">
                     <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-4">
-                            <div className="p-4 rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 shadow-lg">
-                                <Wallet className="h-8 w-8 text-white" />
+                        <div className="flex items-center gap-3 md:gap-4">
+                            <div className="p-2.5 md:p-3 lg:p-4 rounded-xl md:rounded-2xl bg-gradient-to-br from-amber-400 to-yellow-600 shadow-lg">
+                                <Wallet className="h-5 w-5 md:h-6 md:w-6 lg:h-8 lg:w-8 text-white" />
                             </div>
                             <div>
                                 <div className="flex items-center gap-2">
-                                    <p className="text-sm text-muted-foreground font-medium">Total Saldo</p>
+                                    <p className="text-xs md:text-sm text-muted-foreground font-medium">Total Saldo</p>
                                     <Button
                                         variant="ghost"
                                         size="icon"
-                                        className="h-6 w-6 hover:bg-gold/10"
+                                        className="h-5 w-5 md:h-6 md:w-6 hover:bg-gold/10"
                                         onClick={() => setShowBalance(!showBalance)}
                                     >
                                         {showBalance ? (
-                                            <Eye className="h-4 w-4 text-muted-foreground" />
+                                            <Eye className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground" />
                                         ) : (
-                                            <EyeOff className="h-4 w-4 text-muted-foreground" />
+                                            <EyeOff className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground" />
                                         )}
                                     </Button>
                                 </div>
                                 <p className={cn(
-                                    "text-3xl lg:text-4xl font-bold",
+                                    "text-xl md:text-3xl lg:text-4xl font-bold",
                                     summary.balance >= 0 ? "text-emerald-500" : "text-rose-500"
                                 )}>
                                     {showBalance ? formatCurrency(summary.balance) : "••••••••••"}
@@ -87,7 +87,7 @@ export function SummaryCards({ summary }: SummaryCardsProps) {
                 </CardContent>
             </Card>
 
-            <div className="grid grid-cols-3 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 md:gap-4">
                 {smallCards.map((card) => (
                     <Card
                         key={card.title}
@@ -97,34 +97,34 @@ export function SummaryCards({ summary }: SummaryCardsProps) {
                             "absolute inset-0 opacity-5 bg-gradient-to-br",
                             card.gradient
                         )} />
-                        <CardContent className="p-4 lg:p-5 relative">
-                            <div className="flex items-center gap-3">
+                        <CardContent className="p-3 md:p-4 lg:p-5 relative">
+                            <div className="flex items-center gap-2 md:gap-3">
                                 <div className={cn(
-                                    "p-2.5 rounded-xl shadow-lg shrink-0",
+                                    "p-2 md:p-2.5 rounded-lg md:rounded-xl shadow-lg shrink-0",
                                     card.iconBg
                                 )}>
-                                    <card.icon className="h-5 w-5 text-white" />
+                                    <card.icon className="h-4 w-4 md:h-5 md:w-5 text-white" />
                                 </div>
                                 <div className="flex-1 min-w-0">
                                     <div className="flex items-center gap-1">
-                                        <p className="text-xs lg:text-sm text-muted-foreground font-medium">{card.title}</p>
+                                        <p className="text-xs md:text-sm text-muted-foreground font-medium truncate">{card.title}</p>
                                         {!card.isCount && card.setShow && (
                                             <Button
                                                 variant="ghost"
                                                 size="icon"
-                                                className="h-5 w-5 hover:bg-gold/10"
+                                                className="h-4 w-4 md:h-5 md:w-5 hover:bg-gold/10"
                                                 onClick={() => card.setShow(!card.show)}
                                             >
                                                 {card.show ? (
-                                                    <Eye className="h-3 w-3 text-muted-foreground" />
+                                                    <Eye className="h-2.5 w-2.5 md:h-3 md:w-3 text-muted-foreground" />
                                                 ) : (
-                                                    <EyeOff className="h-3 w-3 text-muted-foreground" />
+                                                    <EyeOff className="h-2.5 w-2.5 md:h-3 md:w-3 text-muted-foreground" />
                                                 )}
                                             </Button>
                                         )}
                                     </div>
                                     <p className={cn(
-                                        "text-base lg:text-xl font-bold truncate",
+                                        "text-sm md:text-base lg:text-xl font-bold truncate",
                                         card.isCount ? "text-blue-500" : card.positive ? "text-emerald-500" : "text-rose-500"
                                     )}>
                                         {card.isCount

@@ -1,5 +1,7 @@
 export type TransactionType = "income" | "expense"
 
+export type FilterType = "all" | "income" | "expense"
+
 export interface Category {
     id: string
     name: string
