@@ -118,8 +118,10 @@ export default function FinanceDashboard() {
         return (
             <div className="min-h-screen flex items-center justify-center bg-background" suppressHydrationWarning>
                 <div className="flex flex-col items-center gap-4" suppressHydrationWarning>
-                    <div className="w-12 h-12 rounded-full bg-gold-gradient animate-pulse" suppressHydrationWarning />
-                    <p className="text-muted-foreground">Memuat...</p>
+                    <div className="w-12 h-12 rounded-full bg-primary/20 text-primary flex items-center justify-center animate-spin-slow" suppressHydrationWarning>
+                        <Settings className="h-6 w-6 animate-pulse" />
+                    </div>
+                    <p className="text-muted-foreground font-medium">Memuat...</p>
                 </div>
             </div>
         )
@@ -145,7 +147,7 @@ export default function FinanceDashboard() {
                     <Card className="lg:col-span-2">
                         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-3 md:pb-4 px-4 md:px-6">
                             <CardTitle className="text-lg md:text-xl font-bold">Transaksi</CardTitle>
-                            <Button 
+                            <Button
                                 onClick={() => {
                                     setEditingTransaction(null)
                                     setShowTransactionForm(true)
@@ -197,7 +199,7 @@ export default function FinanceDashboard() {
                                 {categories.slice(0, 8).map((category) => (
                                     <div
                                         key={category.id}
-                                        className="flex items-center gap-1.5 md:gap-2 p-2 rounded-lg bg-muted/50 border border-gold/10 hover:border-gold/30 transition-colors"
+                                        className="flex items-center gap-1.5 md:gap-2 p-2 rounded-lg bg-secondary/50 border border-border hover:border-primary/30 transition-colors"
                                     >
                                         <span className="text-sm md:text-base">{category.icon}</span>
                                         <span className="text-xs md:text-sm truncate">{category.name}</span>
@@ -207,7 +209,7 @@ export default function FinanceDashboard() {
                             {categories.length > 8 && (
                                 <Button
                                     variant="link"
-                                    className="w-full mt-2 text-gold text-xs md:text-sm"
+                                    className="w-full mt-2 text-primary text-xs md:text-sm"
                                     onClick={() => setShowSettings(true)}
                                 >
                                     Lihat semua ({categories.length})
@@ -217,7 +219,10 @@ export default function FinanceDashboard() {
                     </Card>
                 </div>
 
-                <FinanceCharts transactions={filteredTransactions} />
+                <FinanceCharts
+                    transactions={filteredTransactions}
+                    categories={categories}
+                />
             </main>
 
             <TransactionForm

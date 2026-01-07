@@ -4,88 +4,128 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  --background: oklch(0.98 0.005 85);
-  --foreground: oklch(0.20 0.02 60);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.20 0.02 60);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.20 0.02 60);
-  --primary: oklch(0.65 0.15 85);
-  --primary-foreground: oklch(0.15 0.02 60);
-  --secondary: oklch(0.92 0.02 85);
-  --secondary-foreground: oklch(0.25 0.02 60);
-  --muted: oklch(0.95 0.01 85);
-  --muted-foreground: oklch(0.50 0.02 60);
-  --accent: oklch(0.75 0.12 85);
-  --accent-foreground: oklch(0.15 0.02 60);
-  --destructive: oklch(0.55 0.22 25);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.88 0.02 85);
-  --input: oklch(0.88 0.02 85);
-  --ring: oklch(0.65 0.15 85);
-  --chart-1: oklch(0.70 0.15 85);
-  --chart-2: oklch(0.55 0.12 75);
-  --chart-3: oklch(0.60 0.10 65);
-  --chart-4: oklch(0.75 0.08 95);
-  --chart-5: oklch(0.50 0.15 55);
-  --radius: 0.75rem;
-  --sidebar: oklch(0.98 0.005 85);
-  --sidebar-foreground: oklch(0.20 0.02 60);
-  --sidebar-primary: oklch(0.65 0.15 85);
-  --sidebar-primary-foreground: oklch(0.15 0.02 60);
-  --sidebar-accent: oklch(0.95 0.01 85);
-  --sidebar-accent-foreground: oklch(0.20 0.02 60);
-  --sidebar-border: oklch(0.88 0.02 85);
-  --sidebar-ring: oklch(0.65 0.15 85);
+  /* Cozy Light Mode (Morning/Afternoon Vibe) */
+  --background: oklch(0.98 0.01 90);
+  /* Warm Cream/Off-white */
+  --foreground: oklch(0.3 0.05 50);
+  /* Dark Wood Brown text */
 
-  --gold: oklch(0.75 0.15 85);
-  --gold-light: oklch(0.85 0.12 85);
-  --gold-dark: oklch(0.55 0.15 75);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.3 0.05 50);
+
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.3 0.05 50);
+
+  --primary: oklch(0.65 0.1 140);
+  /* Matcha Green */
+  --primary-foreground: oklch(0.98 0.02 90);
+
+  --secondary: oklch(0.92 0.03 90);
+  /* Soft Beige */
+  --secondary-foreground: oklch(0.4 0.05 50);
+
+  --muted: oklch(0.94 0.02 90);
+  --muted-foreground: oklch(0.55 0.05 50);
+  /* Lighter Brown */
+
+  --accent: oklch(0.88 0.05 200);
+  /* Sky Blueish */
+  --accent-foreground: oklch(0.3 0.05 50);
+
+  --destructive: oklch(0.7 0.15 20);
+  /* Soft Red/Pink */
+  --destructive-foreground: oklch(0.98 0.02 90);
+
+  --border: oklch(0.9 0.02 90);
+  /* Very soft border */
+  --input: oklch(0.9 0.02 90);
+  --ring: oklch(0.7 0.1 140);
+  /* Matcha Ring */
+
+  --chart-1: oklch(0.65 0.1 140);
+  /* Matcha */
+  --chart-2: oklch(0.7 0.15 50);
+  /* Soft Terracotta */
+  --chart-3: oklch(0.8 0.1 230);
+  /* Soft Blue */
+  --chart-4: oklch(0.85 0.1 90);
+  /* Soft Yellow */
+  --chart-5: oklch(0.75 0.1 300);
+  /* Soft Purple */
+
+  --radius: 1rem;
+  /* Rounded corners */
+
+  --gold: oklch(0.75 0.12 70);
+  /* Soft Honey Gold */
+
+  --sidebar: oklch(0.96 0.01 90);
+  --sidebar-foreground: oklch(0.3 0.05 50);
+  --sidebar-primary: oklch(0.65 0.1 140);
+  --sidebar-primary-foreground: oklch(0.98 0 0);
+  --sidebar-accent: oklch(0.92 0.03 90);
+  --sidebar-accent-foreground: oklch(0.3 0.05 50);
+  --sidebar-border: oklch(0.9 0.02 90);
+  --sidebar-ring: oklch(0.7 0.1 140);
 }
 
 .dark {
-  --background: oklch(0.12 0.01 60);
-  --foreground: oklch(0.95 0.02 85);
-  --card: oklch(0.15 0.01 60);
-  --card-foreground: oklch(0.95 0.02 85);
-  --popover: oklch(0.15 0.01 60);
-  --popover-foreground: oklch(0.95 0.02 85);
-  --primary: oklch(0.75 0.15 85);
-  --primary-foreground: oklch(0.12 0.01 60);
-  --secondary: oklch(0.22 0.01 60);
-  --secondary-foreground: oklch(0.95 0.02 85);
-  --muted: oklch(0.22 0.01 60);
-  --muted-foreground: oklch(0.65 0.02 85);
-  --accent: oklch(0.25 0.02 70);
-  --accent-foreground: oklch(0.95 0.02 85);
-  --destructive: oklch(0.45 0.18 25);
-  --destructive-foreground: oklch(0.95 0 0);
-  --border: oklch(0.28 0.02 70);
-  --input: oklch(0.28 0.02 70);
-  --ring: oklch(0.75 0.15 85);
-  --chart-1: oklch(0.75 0.15 85);
-  --chart-2: oklch(0.60 0.12 75);
-  --chart-3: oklch(0.65 0.10 65);
-  --chart-4: oklch(0.80 0.08 95);
-  --chart-5: oklch(0.55 0.15 55);
-  --sidebar: oklch(0.15 0.01 60);
-  --sidebar-foreground: oklch(0.95 0.02 85);
-  --sidebar-primary: oklch(0.75 0.15 85);
-  --sidebar-primary-foreground: oklch(0.12 0.01 60);
-  --sidebar-accent: oklch(0.22 0.01 60);
-  --sidebar-accent-foreground: oklch(0.95 0.02 85);
-  --sidebar-border: oklch(0.28 0.02 70);
-  --sidebar-ring: oklch(0.75 0.15 85);
+  /* Cozy Dark Mode (Night Vibe - Lofi Night) */
+  --background: oklch(0.25 0.03 260);
+  /* Deep Night Blue/Purple */
+  --foreground: oklch(0.9 0.02 90);
+  /* Soft White */
 
-  --gold: oklch(0.75 0.15 85);
-  --gold-light: oklch(0.85 0.12 85);
-  --gold-dark: oklch(0.60 0.15 80);
+  --card: oklch(0.3 0.04 260);
+  /* Slightly lighter night */
+  --card-foreground: oklch(0.9 0.02 90);
+
+  --popover: oklch(0.3 0.04 260);
+  --popover-foreground: oklch(0.9 0.02 90);
+
+  --primary: oklch(0.7 0.1 140);
+  /* Matcha Green (keeps warmth) */
+  --primary-foreground: oklch(0.2 0.03 260);
+
+  --secondary: oklch(0.35 0.05 260);
+  --secondary-foreground: oklch(0.9 0.02 90);
+
+  --muted: oklch(0.35 0.04 260);
+  --muted-foreground: oklch(0.7 0.02 260);
+
+  --accent: oklch(0.4 0.06 260);
+  --accent-foreground: oklch(0.9 0.02 90);
+
+  --destructive: oklch(0.6 0.15 20);
+  --destructive-foreground: oklch(0.95 0.02 90);
+
+  --border: oklch(0.4 0.04 260);
+  --input: oklch(0.4 0.04 260);
+  --ring: oklch(0.6 0.1 140);
+
+  --chart-1: oklch(0.7 0.1 140);
+  --chart-2: oklch(0.7 0.15 50);
+  --chart-3: oklch(0.7 0.1 230);
+  --chart-4: oklch(0.8 0.1 90);
+  --chart-5: oklch(0.7 0.1 300);
+
+  --gold: oklch(0.8 0.12 70);
+
+  --sidebar: oklch(0.25 0.03 260);
+  --sidebar-foreground: oklch(0.9 0.02 90);
+  --sidebar-primary: oklch(0.7 0.1 140);
+  --sidebar-primary-foreground: oklch(0.9 0.02 90);
+  --sidebar-accent: oklch(0.35 0.05 260);
+  --sidebar-accent-foreground: oklch(0.9 0.02 90);
+  --sidebar-border: oklch(0.4 0.04 260);
+  --sidebar-ring: oklch(0.6 0.1 140);
 }
 
 @theme inline {
-  --font-sans: 'Inter', var(--font-geist-sans), system-ui, sans-serif;
-  --font-serif: 'Playfair Display', Georgia, serif;
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Quicksand', 'Nunito', 'Inter', system-ui, sans-serif;
+  /* Softer fonts */
+  --font-serif: 'Lora', 'Playfair Display', serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -110,10 +150,13 @@
   --color-chart-3: var(--chart-3);
   --color-chart-4: var(--chart-4);
   --color-chart-5: var(--chart-5);
+
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -122,9 +165,8 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
   --color-gold: var(--gold);
-  --color-gold-light: var(--gold-light);
-  --color-gold-dark: var(--gold-dark);
 }
 
 @layer base {
@@ -133,32 +175,30 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', var(--font-geist-sans), system-ui, sans-serif;
+    @apply bg-background text-foreground transition-colors duration-500 ease-in-out;
   }
 }
 
+/* Helper classes for text colors */
 .text-gold {
-  color: oklch(0.75 0.15 85);
+  color: var(--gold);
 }
 
 .bg-gold {
-  background-color: oklch(0.75 0.15 85);
+  background-color: var(--gold);
 }
 
 .border-gold {
-  border-color: oklch(0.75 0.15 85);
+  border-color: var(--gold);
 }
 
+/* Remove old gradients, prefer flat pastel or soft gradients */
 .text-gold-gradient {
-  background: linear-gradient(135deg, oklch(0.85 0.12 85) 0%, oklch(0.65 0.15 85) 50%, oklch(0.55 0.15 75) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--foreground);
 }
 
 .bg-gold-gradient {
-  background: linear-gradient(135deg, oklch(0.85 0.12 85) 0%, oklch(0.65 0.15 85) 50%, oklch(0.55 0.15 75) 100%);
+  background-color: var(--primary);
 }
 
 .container {
@@ -184,13 +224,18 @@
   }
 }
 
+/* Datepicker Overrides for Cozy Theme */
 .react-datepicker {
   font-family: inherit !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05) !important;
+  overflow: hidden;
 }
 
 .react-datepicker__header {
-  background-color: var(--card) !important;
-  border-bottom: 1px solid oklch(0.75 0.15 85 / 0.3) !important;
+  background-color: var(--secondary) !important;
+  border-bottom: 1px solid var(--border) !important;
 }
 
 .react-datepicker__current-month,
@@ -201,21 +246,23 @@
 
 .react-datepicker__day {
   color: var(--foreground) !important;
+  border-radius: 9999px !important;
+  /* Circle days */
 }
 
 .react-datepicker__day:hover {
-  background-color: oklch(0.75 0.15 85 / 0.2) !important;
+  background-color: var(--accent) !important;
 }
 
 .react-datepicker__day--selected,
 .react-datepicker__day--keyboard-selected {
-  background-color: oklch(0.75 0.15 85) !important;
-  color: white !important;
+  background-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
 
 .react-datepicker__day--today {
-  background-color: oklch(0.75 0.15 85 / 0.3) !important;
   font-weight: bold;
+  color: var(--primary) !important;
 }
 
 .react-datepicker__navigation-icon::before {
